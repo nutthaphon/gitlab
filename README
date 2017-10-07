@@ -1,0 +1,17 @@
+1. Create docker-compose.yml
+2. Run Docker Compose command
+
+cd 'folder yml file located'
+docker-compose up -d    - Start process in background mode
+docker-compose ps       - Show running container
+docker-compose rm -s    - Delete running container
+clogs -f  - Show logging console
+
+3. Change configuration files
+
+docker exec -it gitlab_web_1 vi /etc/gitlab/gitlab.rb
+docker-compose restart
+
+4. Try to open URL: http://localhost:9080
+root/'your password'
+
