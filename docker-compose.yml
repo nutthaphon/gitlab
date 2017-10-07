@@ -4,7 +4,7 @@ web:
   hostname: 'scm.dataascii.com'
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'https://scm.dataascii.com'
+      external_url 'https://scm.dataascii.com:9443'
       gitlab_rails['gitlab_shell_ssh_port'] = 22
       nginx['enable'] = true
       nginx['client_max_body_size'] = '250m'
