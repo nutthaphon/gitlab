@@ -11,6 +11,10 @@ clogs -f  - Show logging console
 
 docker exec -it gitlab_web_1 vi /etc/gitlab/gitlab.rb
 docker-compose restart
+docker exec gitlab_web_1 gitlab-ctl stop
+docker exec gitlab_web_1 gitlab-ctl status
+docker exec gitlab_web_1 gitlab-ctl restart
+docker exec gitlab_web_1 gitlab-ctl reconfigure
 
 4. Try to open URL: http://localhost:9080
 root/'your password'
