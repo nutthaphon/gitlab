@@ -5,14 +5,9 @@ web:
   environment:
     GITLAB_OMNIBUS_CONFIG: |
       external_url 'https://scm.dataascii.com'
-      gitlab_rails['gitlab_shell_ssh_port'] = 22
-      nginx['enable'] = true
-      nginx['client_max_body_size'] = '250m'
       nginx['redirect_http_to_https'] = true
       nginx['ssl_certificate'] = "/etc/gitlab/ssl/#{node['fqdn']}.crt"
       nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/#{node['fqdn']}.key"
-      nginx['ssl_prefer_server_ciphers'] = "on"
-      nginx['ssl_protocols'] = "TLSv1.1 TLSv1.2"
 
       # Add any other gitlab.rb configuration here, each on its own line
   ports:
