@@ -23,11 +23,11 @@ docker exec gitlab_web_1 gitlab-ctl reconfigure
 root/'your password'
 
 2. Enable SSL
-2.1 openssl genrsa -des3 -out scm.dataascii.com.key2 2048 -sha256 -extfile v3.ext
-2.2 openssl req -nodes -newkey rsa:2048 -keyout scm.dataascii.com.key2 -out scm.dataascii.com.csr2
+2.1 openssl genrsa -des3 -out scm.dataascii.com.key2 2048 
+2.2 openssl req -nodes -newkey rsa:2048 -keyout scm.dataascii.com.key2 -out scm.dataascii.com.csr2 
 2.3 Remove passphase key of private key
-2.3.1 cp -v scm.dataascii.com.{key2,original2}
-2.3.2 openssl rsa -in scm.dataascii.com.original2 -out scm.dataascii.com.key2
-2.3.3 rm -v scm.dataascii.com.original2
+    2.3.1 cp -v scm.dataascii.com.{key2,original2}
+    2.3.2 openssl rsa -in scm.dataascii.com.original2 -out scm.dataascii.com.key2
+    2.3.3 rm -v scm.dataascii.com.original2
 2.4 openssl x509 -req -days 365 -in scm.dataascii.com.csr2 -signkey scm.dataascii.com.key2 -out scm.dataascii.com.crt2
 2.5 rm -v scm.dataascii.com.csr2
