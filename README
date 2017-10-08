@@ -1,5 +1,8 @@
-1. Create docker-compose.yml
-2. Run Docker Compose command
+
+1. Basic configuration
+
+1.1 Create docker-compose.yml
+1.2 Run Docker Compose command
 
 cd 'folder yml file located'
 docker-compose up -d    - Start process in background mode
@@ -7,7 +10,7 @@ docker-compose ps       - Show running container
 docker-compose rm -s    - Delete running container
 clogs -f  - Show logging console
 
-3. Change configuration files
+1.3 Change configuration files
 
 docker exec -it gitlab_web_1 vi /etc/gitlab/gitlab.rb
 docker-compose restart
@@ -16,6 +19,15 @@ docker exec gitlab_web_1 gitlab-ctl status
 docker exec gitlab_web_1 gitlab-ctl restart
 docker exec gitlab_web_1 gitlab-ctl reconfigure
 
-4. Try to open URL: http://localhost:9080
+1.4 Try to open URL: http://localhost:9080
 root/'your password'
 
+2. Enable SSL
+2.1 openssl genrsa -des3 -out scm.dataascii.com.key2 2048 -sha256 -extfile v3.ext
+2.2 openssl req -nodes -newkey rsa:2048 -keyout scm.dataascii.com.key2 -out scm.dataascii.com.csr2
+2.3 Remove passphase key of private key
+2.3.1 cp -v scm.dataascii.com.{key2,original2}
+2.3.2 openssl rsa -in scm.dataascii.com.original2 -out scm.dataascii.com.key2
+2.3.3 rm -v scm.dataascii.com.original2
+2.4 openssl x509 -req -days 365 -in scm.dataascii.com.csr2 -signkey scm.dataascii.com.key2 -out scm.dataascii.com.crt2
+2.5 rm -v scm.dataascii.com.csr2
