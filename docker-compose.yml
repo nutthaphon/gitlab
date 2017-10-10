@@ -1,5 +1,6 @@
 web:
-  image: 'gitlab/gitlab-ce:latest'
+  image: 'gitlab:ssl'
+  #image: 'gitlab/gitlab-ce:latest'
   restart: always
   hostname: 'scm.dataascii.com'
   environment:
