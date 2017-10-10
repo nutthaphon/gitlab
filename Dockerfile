@@ -5,4 +5,4 @@ RUN (mv /etc/localtime /etc/localtime.old; ln -s /usr/share/zoneinfo/Asia/Bangko
 
 RUN apt-get install software-properties-common -y --allow-unauthenticated
 RUN add-apt-repository ppa:certbot/certbot
-RUN apt-get update && apt-get install -y certbot --allow-unauthenticated
+RUN apt-get update && apt-get install certbot -y --allow-unauthenticated
