@@ -11,7 +11,6 @@
 ##! For more details on configuring external_url see:
 ##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
 #external_url 'GENERATED_EXTERNAL_URL'
-
 ## Legend
 ##! The following notations at the beginning of each line may be used to
 ##! differentiate between components of this file and to easily select them using
@@ -817,7 +816,9 @@
 
 # nginx['enable'] = true
 # nginx['client_max_body_size'] = '250m'
+nginx['client_max_body_size'] = '250m'
 # nginx['redirect_http_to_https'] = false
+nginx['redirect_http_to_https'] = true
 # nginx['redirect_http_to_https_port'] = 80
 
 ##! Most root CA's are included by default
@@ -830,7 +831,9 @@
 # nginx['ssl_verify_depth'] = "1"
 
 # nginx['ssl_certificate'] = "/etc/gitlab/ssl/#{node['fqdn']}.crt"
+nginx['ssl_certificate'] = "/etc/gitlab/ssl/#{node['fqdn']}.crt2"
 # nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/#{node['fqdn']}.key"
+nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/#{node['fqdn']}.key2"
 # nginx['ssl_ciphers'] = "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256"
 # nginx['ssl_prefer_server_ciphers'] = "on"
 
