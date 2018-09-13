@@ -1,18 +1,25 @@
 web:
-  image: 'gitlab:ssl'
-  #image: 'gitlab/gitlab-ce:latest'
-  restart: always
-  hostname: 'scm.dataascii.com'
+  image: 'gitlab/gitlab-ce:latest'
+  restart: 'no'
+  hostname: 'cloudserver'
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'https://scm.dataascii.com'
-
-      # Add any other gitlab.rb configuration here, each on its own line
+      external_url 'http://10.80.1.111:9090'
+      gitlab_rails['gitlab_shell_ssh_port'] = 2225
+      gitlab_rails['smtp_enable'] = true
+      gitlab_rails['smtp_address'] = "smtp.gmail.com"
+      gitlab_rails['smtp_port'] = 587
+      gitlab_rails['smtp_user_name'] = "nutthaphon@v-smart.com"
+      gitlab_rails['smtp_password'] = "IaMaMan@3721"
+      gitlab_rails['smtp_domain'] = "smtp.gmail.com"
+      gitlab_rails['smtp_authentication'] = "login"
+      gitlab_rails['smtp_enable_starttls_auto'] = true
+      gitlab_rails['smtp_tls'] = false
+      gitlab_rails['smtp_openssl_verify_mode'] = 'peer'
   ports:
-    - '9080:80'
-    - '9443:443'
-    - '9022:22'
+    - '9090:9090'
+    - '2225:22'
   volumes:
-    - '/home/nutt/Docker/gitlab/config:/etc/gitlab'
-    - '/home/nutt/Docker/gitlab/logs:/var/log/gitlab'
-    - '/home/nutt/Docker/gitlab/data:/var/opt/gitlab'
+    - '/home/cloudman/Docker/gitlab/config:/etc/gitlab'
+    - '/home/cloudman/Docker/gitlab/logs:/var/log/gitlab'
+    - '/home/cloudman/Docker/gitlab/data:/var/opt/gitlab'
